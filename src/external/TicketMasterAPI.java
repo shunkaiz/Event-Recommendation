@@ -23,6 +23,8 @@ public class TicketMasterAPI {
 	private static final String API_KEY = "NtDgAsh381ComX4x3nQdQsPAsC5cC37p";
 	
     public List<Item> search(double lat, double lon, String term) {
+		//String url = "http://" + API_HOST + SEARCH_PATH;
+		String latlong = lat + "," + lon;    	
     	if(term == null) {
     		term = DEFAULT_TERM;
     	}
@@ -75,9 +77,9 @@ public class TicketMasterAPI {
 	}
 	
 	private JSONObject getVenue(JSONObject event) throws JSONException {
-		if(event.isNull("_embedded")) {
+		if(!event.isNull("_embedded")) {
 			JSONObject jsob = event.getJSONObject("_embedded");
-			if(jsob.isNull("venues")) {
+			if(!jsob.isNull("venues")) {
 				JSONArray venues = jsob.getJSONArray("venues");
 				if(venues.length()>= 0) {
 					return venues.getJSONObject(0);
@@ -180,9 +182,9 @@ public class TicketMasterAPI {
 	public static void main(String[] args) {
 		TicketMasterAPI tmApi = new TicketMasterAPI();
 		// Mountain View, CA
-		// tmApi.queryAPI(37.38, -122.08);
+		 tmApi.queryAPI(37.38, -122.08);
 		// Houston, TX
-		tmApi.queryAPI(29.682684, -95.295410);
+		//tmApi.queryAPI(29.682684, -95.295410);
 	}
     
 	
