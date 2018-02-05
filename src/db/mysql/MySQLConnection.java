@@ -198,12 +198,42 @@ public class MySQLConnection implements DBConnection{
 
 	@Override
 	public String getFullname(String userId) {
-		return null;
+		if(conn == null) {
+			return null;
+		}
+		String fullName = "";
+		try {
+			String sql = "Select first_name, last_name From users Where user_id = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, userId);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				fullName = String.join("",rs.getString("first_name"), rs.getString("last_name"));
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return fullName;
 	}
 
 	@Override
 	public boolean verifyLogin(String userId, String password) {
-		// TODO Auto-generated method stub
+		if (conn == null) {
+			return false;
+		}
+		try {
+			String sql = "SELECT user_id from users WHERE user_id = ? and password = ?";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, userId);
+			statement.setString(2, password);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		return false;
 	}
 	
