@@ -40,12 +40,15 @@ public class SearchItem extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		// allow access only if session exists
+		
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			response.setStatus(403);
 			return;
 		}
-		String userId = session.getAttribute("user_id").toString();		
+		
+		String userId = session.getAttribute("user_id").toString();	
+		
 		double lat = Double.parseDouble(request.getParameter("lat"));
 		double lon = Double.parseDouble(request.getParameter("lon"));
 		String term = request.getParameter("term");
