@@ -40,12 +40,13 @@ public class ItemHistory extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// allow access only if session exists
-		HttpSession session = request.getSession(false);
+/*		HttpSession session = request.getSession(false);
 		if (session == null) {
 			response.setStatus(403);
 			return;
-		}
-		String userId = session.getAttribute("user_id").toString();
+		}*/
+	//	String userId = session.getAttribute("user_id").toString();
+		String userId = request.getParameter("user_id");
 		JSONArray array = new JSONArray();
 
 		DBConnection conn = DBConnectionFactory.getDBConnection();
