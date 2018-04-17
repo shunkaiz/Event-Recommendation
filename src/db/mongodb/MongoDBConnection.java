@@ -77,7 +77,6 @@ public class MongoDBConnection implements DBConnection {
 				builder.setUrl(doc.getString("url"));
 				//builder.setDistance(doc.getDouble("distance"));
 				builder.setCategories(getCategories(itemId));
-
 				favoriteItems.add(builder.build());
 			}
 		}

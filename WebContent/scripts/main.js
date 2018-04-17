@@ -50,6 +50,8 @@
 
 			if (result.status === 'OK') {
 				onSessionValid(result);
+			}else{
+				onSessionInvalid();
 			}
 		});
 	}

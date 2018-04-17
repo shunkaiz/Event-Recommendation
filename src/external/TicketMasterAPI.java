@@ -37,8 +37,6 @@ public class TicketMasterAPI {
     	try {
     		HttpURLConnection connection = (HttpURLConnection) new URL(URL + "?" + query).openConnection();
     		connection.setRequestMethod("GET");
-    		int responseCode = connection.getResponseCode();
-    		System.out.println("Response code" + responseCode);
     		BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
     		StringBuilder response = new StringBuilder();
     		String line = "";
@@ -60,18 +58,6 @@ public class TicketMasterAPI {
     	
     	return new ArrayList<Item>();
     }
-	
-	private void queryAPI(double lat, double lon) {
-		List<Item> events = search(lat, lon, null);
-		try {
-		    for (int i = 0; i < events.size(); i++) {
-		        JSONObject event = events.get(i).toJSONObject();
-		        System.out.println(event);
-		    }
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	private JSONObject getVenue(JSONObject event) throws JSONException {
 		if(!event.isNull("_embedded")) {
@@ -123,7 +109,7 @@ public class TicketMasterAPI {
 		for(int i = 0; i< events.length(); i++) {
 			JSONObject event = events.getJSONObject(i);
 			
-			ItemBuilder builder = new ItemBuilder();
+			Item.ItemBuilder builder = new ItemBuilder();
 			if (!event.isNull("name")) {
 				builder.setName(event.getString("name"));
 			}
@@ -171,18 +157,5 @@ public class TicketMasterAPI {
 		return itemList;
 		
 	}
-
-	
-	
-	
-	
-	public static void main(String[] args) {
-		TicketMasterAPI tmApi = new TicketMasterAPI();
-		// Mountain View, CA
-		 tmApi.queryAPI(37.38, -122.08);
-		// Houston, TX
-		//tmApi.queryAPI(29.682684, -95.295410);
-	}
-    
 	
 }

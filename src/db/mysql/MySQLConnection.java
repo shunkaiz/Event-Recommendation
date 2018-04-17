@@ -152,7 +152,6 @@ public class MySQLConnection implements DBConnection{
 			System.out.println(e.getMessage());
 		}
 		return categories;
-
 	}
 
 	@Override
