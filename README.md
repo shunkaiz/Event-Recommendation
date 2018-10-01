@@ -1,2 +1,3 @@
-# Restaurant-Recommendation
-An online event recommendation website supported by Ticketmaster API
+# Yup
+The web application helps people look for ideal events of all kinds with the given customized filter tool.
+
