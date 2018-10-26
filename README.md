@@ -33,7 +33,7 @@ npm start react
 * MongoDB [MongoDB java driver](https://oss.sonatype.org/content/repositories/releases/org/mongodb/mongo-java-driver/3.6.1/mongo-java-driver-3.6.1.jar),
 [bson](https://oss.sonatype.org/content/repositories/releases/org/mongodb/bson/3.6.1/bson-3.6.1.jar)
 
-### Features
+## Features
 When you start the project, you should see the following paget at localhost:8080  
 The events displayed in "Nearby" tab has sorted based on geological distance
 <img width="1024" alt = "1" src="https://user-images.githubusercontent.com/24465921/47537786-a58fa900-d87c-11e8-8ab8-e4487b56a482.png">  
